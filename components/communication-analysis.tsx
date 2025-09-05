@@ -124,7 +124,7 @@ export function CommunicationAnalysis({ detailed = false }: CommunicationAnalysi
             <div className="text-sm text-muted-foreground">Total Messages</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-secondary">{urgentPercentage}%</div>
+            <div className="text-2xl font-bold text-primary">{urgentPercentage}%</div>
             <div className="text-sm text-muted-foreground">Urgent Content</div>
           </div>
         </div>
@@ -141,7 +141,7 @@ export function CommunicationAnalysis({ detailed = false }: CommunicationAnalysi
           {trendingTopics.slice(0, 3).map((topic: any, index: number) => (
             <div key={index} className="flex items-center justify-between text-sm">
               <span>{topic.topic}</span>
-              <Badge variant="secondary">{topic.count}</Badge>
+              <Badge variant="outline">{topic.count}</Badge>
             </div>
           ))}
         </div>
@@ -442,7 +442,7 @@ export function CommunicationAnalysis({ detailed = false }: CommunicationAnalysi
                       </div>
                       <Badge
                         variant={
-                          cluster.avgUrgency > 0.7 ? "destructive" : cluster.avgUrgency > 0.5 ? "secondary" : "outline"
+                          cluster.avgUrgency > 0.7 ? "destructive" : cluster.avgUrgency > 0.5 ? "outline" : "outline"
                         }
                       >
                         {cluster.avgUrgency > 0.7 ? "High Risk" : cluster.avgUrgency > 0.5 ? "Medium Risk" : "Low Risk"}
@@ -507,7 +507,7 @@ export function CommunicationAnalysis({ detailed = false }: CommunicationAnalysi
             {urgentMessages.slice(0, 3).map((msg: any) => (
               <div key={msg.id} className="p-4 rounded-lg border bg-card">
                 <div className="flex items-start justify-between mb-2">
-                  <Badge variant={msg.urgency === "critical" ? "destructive" : "secondary"}>
+                  <Badge variant={msg.urgency === "critical" ? "destructive" : "outline"}>
                     {msg.urgency.toUpperCase()}
                   </Badge>
                   <span className="text-xs text-muted-foreground">{new Date(msg.timestamp).toLocaleTimeString()}</span>

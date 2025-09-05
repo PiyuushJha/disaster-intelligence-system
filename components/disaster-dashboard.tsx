@@ -24,6 +24,7 @@ import { EnvironmentalChart } from "./environmental-chart"
 import { InteractiveMap } from "./interactive-map"
 import { CommunicationAnalysis } from "./communication-analysis"
 import { AlertsPanel } from "./alerts-panel"
+import { ThemeToggle } from "./theme-toggle"
 import { useRealTimeData } from "@/hooks/use-real-time-data"
 
 export function DisasterDashboard() {
@@ -84,10 +85,11 @@ export function DisasterDashboard() {
                 />
                 <span className="text-sm font-medium">{isConnected ? "Connected" : "Disconnected"}</span>
               </div>
-              <Badge variant="default" className="gap-1 bg-primary text-primary-foreground">
+              <Badge variant="outline" className="gap-1 text-primary border-primary">
                 <Radio className="w-3 h-3" />
                 Live Data
               </Badge>
+              <ThemeToggle />
             </div>
           </div>
         </div>

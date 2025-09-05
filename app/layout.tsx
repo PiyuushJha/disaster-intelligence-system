@@ -1,13 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import {
-  Playfair_Display,
-  Source_Sans_3,
-  JetBrains_Mono,
-} from "next/font/google"
+import { Playfair_Display, Source_Sans_3 as Source_Sans_Pro, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
 
-// Fonts
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
@@ -15,10 +11,10 @@ const playfairDisplay = Playfair_Display({
   weight: ["400", "700"],
 })
 
-const sourceSans3 = Source_Sans_3({
+const sourceSansPro = Source_Sans_Pro({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-source-sans-3",
+  variable: "--font-source-sans-pro",
   weight: ["400", "600"],
 })
 
@@ -28,14 +24,12 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 })
 
-// Metadata
 export const metadata: Metadata = {
   title: "Disaster Intelligence System",
   description: "Hyper-Localized Disaster Intelligence & Environmental Monitor",
   generator: "v0.app",
 }
 
-// Layout
 export default function RootLayout({
   children,
 }: {
@@ -44,9 +38,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${sourceSans3.variable} ${jetbrainsMono.variable} antialiased`}
+      className={`${playfairDisplay.variable} ${sourceSansPro.variable} ${jetbrainsMono.variable} antialiased`}
+      suppressHydrationWarning
     >
-      <body>{children}</body>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
